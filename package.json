@@ -1,0 +1,19 @@
+{
+  "name": "zihadul",
+  "version": "1.0.0",
+  "description": "second Es",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zihadulazam/SE2_16_173509_L4.git"
+  },
+  "author": "zihadul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zihadulazam/SE2_16_173509_L4/issues"
+  },
+  "homepage": "https://github.com/zihadulazam/SE2_16_173509_L4#readme"
+}
