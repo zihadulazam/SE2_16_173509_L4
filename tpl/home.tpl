@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <h2>(:msg:)</h2>
+        <div class="card-panel teal lighten-2 center-align">(:msg:)</div>
         <div class="container">
             <!--conteiner cerca-->
             <div>
