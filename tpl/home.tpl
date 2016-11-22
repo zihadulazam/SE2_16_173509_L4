@@ -11,7 +11,7 @@
         <meta charset="utf-8"/>
     </head>
     <body>
-        <div class="card-panel teal lighten-2 center-align">(:msg:)</div>
+        <div class="card-panel teal lighten-2 center-align"><h4>(:msg:)</h4></div>
         <div class="container">
             <!--conteiner cerca-->
             <div>
@@ -22,18 +22,18 @@
                             <input id="searchId" name="searchId" type="text" class="validate" value="(:id:)">
                             <label for="searchId">Cerca Con ID</label>
                         </div>
-                        <div class="input-field col s3">
-                            <a class="waves-effect waves-light btn" onclick="cerca();">Cerca</a>
+                        <div class="input-field col s3 right-align">
+                            <a class="waves-effect waves-light btn" onclick="cerca();"><i class="material-icons left">search</i>Cerca</a>
                         </div>
-                        <div class="input-field col s3">
-                            <a class="waves-effect waves-light btn" onclick="elimina();">Elimina</a>
+                        <div class="input-field col s3 left-align">
+                            <a class="waves-effect waves-light btn" onclick="elimina();"><i class="material-icons left">delete</i>Elimina</a>
                         </div>
                     </div>
                 </form>
             </div>
             <!--conteiner insert-form-->
             <div>
-                <a class="waves-effect waves-light btn" onclick="toggle_insert()">Visualizza Inserisci-Form</a>
+                <a class="waves-effect waves-light btn" onclick="toggle_insert()"><i class="material-icons left">toc</i>Inserisci</a>
                 <form method="POST" action="/insert" id="insert-form" style="
                     (:if[hide] ~
                         [:then ~ display:none :]
@@ -60,7 +60,7 @@
                         <label for="salary">Paga</label>
                     </div>
                     <div class="input-field center-align">
-                        <a type="submit" class="waves-effect waves-light btn" onclick="inserisci();"> Aggiungi</a>
+                        <a type="submit" class="waves-effect waves-light btn" onclick="inserisci();"><i class="material-icons left">playlist_add</i>Aggiungi</a>
                     </div>
                 </form>
             </div>
