@@ -45,7 +45,7 @@ app.post('/insert',function (req,res) {
     if(typeof req.body!='undefined' && req.body){
         var mess;
         if(dataManager.insert(req.body.id,req.body.name,req.body.surname,req.body.level,req.body.salary)==1){
-            mess="Satato Operazione: Ok";
+            mess="Inserito con successo !!!";
         }
         else
             mess="Error: Some Input values are not Int !!";
