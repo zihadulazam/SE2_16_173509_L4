@@ -9,7 +9,7 @@ function toggle_insert() {
 
 function elimina(){
     var serchKey=document.getElementById('searchId').value;
-    if(serchKey>=0)
+    if(serchKey>=0 && serchKey!='')
     {
         var form= document.getElementById('myForm');
         form.action="/delete";
@@ -17,12 +17,13 @@ function elimina(){
     }
     else
     {
-        alert("Devi inserire un intero nel campo: <Cerca con ID>!!!");
+        var mesBox=document.getElementById('mesBox');
+        mesBox.innerHTML='Devi inserire un intero nel campo: <Cerca con ID> e deve essere >= 0 !!!';
     }
 }
 function cerca(){
     var serchKey=document.getElementById('searchId').value;
-    if(serchKey>=0)
+    if(serchKey>=0 && serchKey!='')
     {
         var form= document.getElementById('myForm');
         form.action="/find";
@@ -30,7 +31,8 @@ function cerca(){
     }
     else
     {
-        alert("Devi inserire un intero nel campo: <Cerca con ID>!!!");
+        var mesBox=document.getElementById('mesBox');
+        mesBox.innerHTML='Devi inserire un intero nel campo: <Cerca con ID> e deve essere >= 0 !!!';
     }
 }
 
@@ -45,6 +47,8 @@ function inserisci() {
         var form= document.getElementById('insert-form');
         form.submit();
     }
-    else
-        alert("Devi inserire bene i campi; ID, Livello e Paga devono essere Int !!!");
+    else{
+        var mesBox=document.getElementById('mesBox');
+        mesBox.innerHTML='Devi compilare bene i campi; ID, Livello e Paga devono essere Int !!!';
+    }
 }

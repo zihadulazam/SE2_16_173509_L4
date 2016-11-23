@@ -11,7 +11,7 @@
         <meta charset="utf-8"/>
     </head>
     <body>
-        <div class="card-panel teal lighten-2 center-align"><h4>(:msg:)</h4></div>
+        <div class="card-panel teal lighten-2 center-align"><h4 id="mesBox">(:msg:)</h4></div>
         <div class="container">
             <!--conteiner cerca-->
             <div>
