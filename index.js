@@ -27,10 +27,10 @@ app.use('/fonts',express.static(__dirname+'/fonts'));
 app.use('/js',express.static(__dirname+'/js'));
 
 
-
+//router di default
 app.get('/',function (req,res) {
     bind.toFile('tpl/home.tpl',{
-        //first time empty
+        //invia a template con il parametro di visualizzazione form
         hide:true
     },
     function (data)
@@ -41,15 +41,20 @@ app.get('/',function (req,res) {
     });
 });
 
+//router per insert, nel body post riceve i parametri di un employee da inserire
 app.post('/insert',function (req,res) {
     if(typeof req.body!='undefined' && req.body){
         var mess;
+       //provo a inserire unsando la funzione insert del dataManager
         if(dataManager.insert(req.body.id,req.body.name,req.body.surname,req.body.level,req.body.salary)==1){
+            //ho inserito, alla varibile mess scrivo un messaggio di successo
             mess="Inserito con successo !!!";
         }
-        else
+        else{
+            //non ho inserito, alla varibile mess scrivo un messaggio di errore
             mess="Error: Some Input values are not Int !!";
-
+        }
+        //invio al template home.tpl con il parametro messaggio da visualizzare
         bind.toFile('tpl/home.tpl', 
         {
             //set up parameters
@@ -66,13 +71,13 @@ app.post('/insert',function (req,res) {
         console.log("vuoto");
 })
 
-//router find
+//router find; cerca un employee
 app.get('/find',function (req,res) {
     var url_parts = url.parse(req.url, true);
     var query = url_parts.query;
     var index=dataManager.find(parseInt(req.query.searchId));
     if(index>=0){
-        //trovato
+        //trovato, allora invio al template le info del emplyee trovato
         emp=dataManager.getEmployeeByIndex(index);
         bind.toFile('tpl/home.tpl', 
         {
@@ -93,7 +98,7 @@ app.get('/find',function (req,res) {
         });
     }
     else{
-        //non ho trovato
+        //non ho trovato, invio solo un messaggio e dico di tenere il form insert nascosto
         bind.toFile('tpl/home.tpl', 
         {
             //set up parameters
@@ -109,22 +114,23 @@ app.get('/find',function (req,res) {
     }
 });
 
-//router delete
+//router delete: elimina un employee
 app.get('/delete',function (req,res) {
     var url_parts = url.parse(req.url, true);
     var query = url_parts.query;
     var index=dataManager.find(parseInt(req.query.searchId));
     var mess;
     if(index>=0){
-        //trovato
-        //adesso elimino
+        //trovato un employee che ha quel id
+        //adesso elimino e fisso un messaggio di successo
         dataManager.deleteElem(index);
         mess="Eliminato !!!";
     }
     else{
-        //non ho trovato
+        //non ho trovato, fisso un messaggio di errore
        mess="Non ho trovato elemento da elininare!!!";
     }
+    //invio al template il risultato del delete, e nascondo insert form
      bind.toFile('tpl/home.tpl', 
     {
         //set up parameters
@@ -139,6 +145,7 @@ app.get('/delete',function (req,res) {
     });
 });
 
+//avvio il server
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
